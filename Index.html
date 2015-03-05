@@ -23,6 +23,7 @@
       border-radius: 10px;
     }
     .thumbnail{
+      height: 250px !important;
       min-height: 250px !important;
       max-height: 250px !important;
     }
@@ -46,7 +47,7 @@
           <img src="file_icon.png" alt="FilePreview">
           <div class="caption">
             <h5>{{ x.name }}</h5>
-            <p><a ng-href="Books/{{x.url}}" class="btn btn-primary" role="button">View</a></p>
+            <p><a ng-href="{{x.url}}" class="btn btn-primary" role="button">View</a></p>
           </div>
         </div>
       </div>
@@ -58,11 +59,11 @@
 <script>
   function personController($scope) {
     $scope.documents=[
-      {name:"The Rails 4 way",url:"The Rails 4 way.pdf"},
-      {name:"The Ruby Programming language",url:"The Ruby Programming language.pdf"},
-      {name:"Beginning Backbone",url:"Beginning Backbone.js.pdf"},
-      {name:"Refactoring Ruby",url:"Refactoring Ruby.pdf"},
-      {name:"Learning Ruby",url:"LearnRubyTheHardWay.pdf"}
+      {name:"The Rails 4 way",url:"http://ir.hubspot.com/files/doc_downloads/test.pdf"},
+      {name:"The Ruby Programming language",url:"http://ir.hubspot.com/files/doc_downloads/test.pdf"},
+      {name:"Beginning Backbone",url:"http://ir.hubspot.com/files/doc_downloads/test.pdf"},
+      {name:"Refactoring Ruby",url:"http://ir.hubspot.com/files/doc_downloads/test.pdf"},
+      {name:"Learning Ruby",url:"http://ir.hubspot.com/files/doc_downloads/test.pdf"}
     ]
   }
 </script>
