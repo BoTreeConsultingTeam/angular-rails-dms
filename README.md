@@ -1,8 +1,9 @@
 # angular-rails-dms
 
 Following steps to run demo:
-1. open terminal and run "bower install"
-2. open index.html
+
+1. Open terminal and run "bower install"
+2. Open index.html
 
 Angular Plugin:
 
