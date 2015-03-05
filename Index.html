@@ -2,8 +2,9 @@
 <html>
 
 <head>
+<script src="http://dufozrddxzwdn.cloudfront.net/latest/filepreviews.min.js"></script>
 <link href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css" rel="stylesheet">
-<script type="text/javascript" src="http://getbootstrap.com/dist/js/bootstrap.min.js"></script>
+<!--<script type="text/javascript" src="http://getbootstrap.com/dist/js/bootstrap.min.js"></script>-->
 <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.2.26/angular.min.js"></script>
   <style>
     .mrgtop30{
@@ -23,9 +24,19 @@
       border-radius: 10px;
     }
     .thumbnail{
-      height: 250px !important;
-      min-height: 250px !important;
-      max-height: 250px !important;
+      height: 300px !important;
+      min-height: 300px !important;
+      max-height: 300px !important;
+    }
+    .previewHeight{
+      /*height: 250px;*/
+      width: 230px !important;
+      min-height: auto !important;
+      max-height: 250px;
+    }
+    .previewHeightcontainer{
+      height: 255px;
+      min-height: auto;
     }
   </style>
 </head>
@@ -44,11 +55,14 @@
     <div class="row">
       <div class="col-xs-6 col-md-3" ng-repeat="x in documents | filter:searchText">
         <div class="thumbnail">
-          <img src="file_icon.png" alt="FilePreview">
-          <div class="caption">
-            <h5>{{ x.name }}</h5>
-            <p><a ng-href="{{x.url}}" class="btn btn-primary" role="button">View</a></p>
-          </div>
+          <a ng-href="{{x.url}}">
+            <div class="previewHeightcontainer">
+              <img ng-attr-id="file-{{x.id}}" src="" class="previewHeight" ng-init="getUrl(x)"/>
+            </div>
+            <div class="caption">
+              <p><h5>{{ x.name }}</h5></p>
+            </div>
+          </a>
         </div>
       </div>
     </div>
@@ -56,15 +70,24 @@
 
 </div>
 
+
+
 <script>
   function personController($scope) {
     $scope.documents=[
-      {name:"The Rails 4 way",url:"http://ir.hubspot.com/files/doc_downloads/test.pdf"},
-      {name:"The Ruby Programming language",url:"http://ir.hubspot.com/files/doc_downloads/test.pdf"},
-      {name:"Beginning Backbone",url:"http://ir.hubspot.com/files/doc_downloads/test.pdf"},
-      {name:"Refactoring Ruby",url:"http://ir.hubspot.com/files/doc_downloads/test.pdf"},
-      {name:"Learning Ruby",url:"http://ir.hubspot.com/files/doc_downloads/test.pdf"}
-    ]
+      {id:1, name: 'first document', url:'http://www.education.gov.yk.ca/pdf/pdf-test.pdf'},
+      {id:2, name: 'forth document', url:'http://upload.wikimedia.org/wikipedia/en/6/60/F-test.png'},
+      {id:3, name: 'fifth document', url:'http://calibre-ebook.com/downloads/demos/demo.docx'},
+      {id:4, name: 'sixth document', url:'http://ir.hubspot.com/files/doc_downloads/test.pdf'},
+      {id:5, name: 'seventh document', url:'http://homepages.inf.ed.ac.uk/neilb/TestWordDoc.doc'}
+    ];
+
+    $scope.getUrl = function(x){
+      var previews = new FilePreviews();
+      previews.generate(x.url, function(err, result) {
+        document.getElementById("file-"+ x.id).src = result.previewURL
+      });
+    }
   }
 </script>
 
