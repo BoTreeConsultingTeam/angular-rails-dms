@@ -12,3 +12,5 @@ gem 'sdoc', '~> 0.4.0',          group: :doc
 gem 'spring',        group: :development
 gem 'devise'
 gem 'paperclip'
+gem 'angular-rails-templates'
+gem 'bower-rails'

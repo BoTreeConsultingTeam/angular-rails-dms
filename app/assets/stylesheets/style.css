@@ -1,3 +1,26 @@
 .mrgtop20{
   margin-top: 20px;
 }
+.mrgtop30{
+    margin-top: 30px;
+}
+.white-bg{
+    background: #fff;
+    padding: 20px;
+    border-radius: 10px;
+}
+.thumbnail{
+    height: 300px !important;
+    min-height: 300px !important;
+    max-height: 300px !important;
+}
+.previewHeight{
+    /*height: 250px;*/
+    width: 230px !important;
+    min-height: auto !important;
+    max-height: 250px;
+}
+.previewHeightcontainer{
+    height: 255px;
+    min-height: auto;
+}

@@ -9,4 +9,17 @@ class WelcomeController < ApplicationController
     @all_users = User.all.where("id != ?", current_user.id).pluck(:name,:id)
   end
 
+  def get_files
+    my_uploads_hash = []
+    shared_uploads_hash = []
+    my_uploads = current_user.uploads
+    shared_uploads = current_user.shares
+    my_uploads.each{|u| my_uploads_hash << {id: u.id, name: (u.name rescue ""), url: "http://38718b1e.ngrok.com#{(u.file.url rescue "")}"}}
+    shared_uploads.each{|u| shared_uploads_hash << {id: u.id, name: (u.name rescue ""), url: "http://38718b1e.ngrok.com#{(u.file.url rescue "")}"}}
+    render json: {
+        my_uploads: my_uploads_hash,
+        shared_uploads:shared_uploads_hash
+    }
+  end
+
 end

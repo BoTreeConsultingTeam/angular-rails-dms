@@ -1,4 +1,4 @@
-class UploadsController < ApplicationController\
+class UploadsController < ApplicationController
 
   before_filter :authenticate_user!
 
