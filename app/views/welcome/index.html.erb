@@ -1,3 +1,53 @@
 <h1>Welcome to Angular Rails DMS Application</h1>
 
-<%= link_to :sign_out, destroy_user_session_path, method: 'delete' %>
+<div class="row">
+  <div class="col-lg-12 mrgtop20">
+    <%= link_to :sign_out, destroy_user_session_path, method: 'delete' %>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-lg-4 mrgtop20">
+    <%= form_for @upload, html: {multipart: true} do |f| %>
+      <%= f.file_field :file, class: "from-control" %>
+      <%= (flash[:error] || flash[:success]) if @upload.errors.present? %><br>
+      Select Users to share with:
+      <%= select_tag "users[]", options_for_select(@all_users), class:"select_user form-control", multiple:"multiple" %>
+      <br><br>
+      <%= f.submit :upload, class: "btn btn-primary btn-sm" %>
+    <% end %>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-lg-12 mrgtop20">
+    <div role="tabpanel">
+
+      <!-- Nav tabs -->
+      <ul class="nav nav-tabs" role="tablist">
+        <li role="presentation" class="active"><a href="#my" aria-controls="home" role="tab" data-toggle="tab">My Files</a></li>
+        <li role="presentation"><a href="#shared" aria-controls="profile" role="tab" data-toggle="tab">Shared Files</a></li>
+      </ul>
+
+      <!-- Tab panes -->
+      <div class="tab-content">
+        <!-- My Files -->
+        <div role="tabpanel" class="tab-pane fade in active" id="my">
+          <%= @my_uploads.inspect %>
+        </div>
+        <!-- /My Files -->
+
+        <!-- Shared With Me -->
+        <div role="tabpanel" class="tab-pane fade" id="shared">
+          <%= @shared_uploads.inspect %>
+        </div>
+        <!-- /Shared With Me -->
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<script>
+    $(".select_user").select2();
+</script>
