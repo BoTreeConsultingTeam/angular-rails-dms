@@ -6,7 +6,7 @@ class UploadsController < ApplicationController
     @upload = current_user.uploads.new(upload_params)
     if @upload.save
       flash[:success] = "Uploaded Successfully.!"
-      params[:users].each { |id| @upload.shares.new(user_id: id).save }
+      params[:users].each { |id| @upload.shares.new(user_id: id).save } if params[:users].present?
       redirect_to root_path
     else
       flash[:error] = @upload.errors.full_messages.to_sentence
