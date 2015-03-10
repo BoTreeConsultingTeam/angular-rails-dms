@@ -8,6 +8,6 @@ class Upload < ActiveRecord::Base
                     :path => ":rails_root/public/assets/products/:id/:style/:basename.:extension"
 
   validates_attachment_presence :file
-  validates_attachment_content_type :file, :content_type => ['image/jpeg', 'image/png', "application/pdf"]
+  validates_attachment_content_type :file, :content_type => ['image/jpeg', 'image/png', 'application/pdf']
 
 end

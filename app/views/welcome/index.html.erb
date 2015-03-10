@@ -2,7 +2,7 @@
 
 <div class="row">
   <div class="col-lg-12 mrgtop20">
-    <%= link_to :sign_out, destroy_user_session_path, method: 'delete' %>
+    <%= link_to "Sign Out", destroy_user_session_path, method: 'delete' %>
   </div>
 </div>
 
@@ -29,24 +29,20 @@
         <li role="presentation"><a href="#shared" aria-controls="profile" role="tab" data-toggle="tab">Shared Files</a></li>
       </ul>
 
+
+      <div ng-app="angular-rails-dms.exampleApp" ng-controller="WelcomeController">
+
       <!-- Tab panes -->
       <div class="tab-content">
-        <!-- My Files -->
-        <!--<div role="tabpanel" class="tab-pane fade in active" id="my">-->
-          <!--<%#= @my_uploads.inspect %>-->
-        <!--</div>-->
-        <!-- /My Files -->
 
-        <!-- Shared With Me -->
-        <div ng-app="angular-rails-dms.exampleApp" ng-controller="WelcomeController" class="tab-pane fade" id="shared">
+        <!-- My Files -->
+        <div role="tabpanel" class="tab-pane fade in active" id="my">
           <div class="pull-right">
             <span aria-hidden="true"></span> <input ng-model="searchText">
           </div>
-
           <br><br><br><br>
-
           <div class="row">
-            <div class="col-xs-6 col-md-3" ng-repeat="x in documents | filter:searchText">
+            <div class="col-xs-6 col-md-3" ng-repeat="x in my_documents | filter:searchText">
               <div class="thumbnail">
                 <a ng-href="{{x.url}}">
                   <div class="previewHeightcontainer">
@@ -60,13 +56,35 @@
             </div>
           </div>
         </div>
-        <!--<div role="tabpanel" class="tab-pane fade" id="shared">-->
-          <%#= @shared_uploads.inspect %>
-        <!--</div>-->
+        <!-- /My Files -->
+
+        <!-- Shared With Me -->
+
+        <div role="tabpanel" class="tab-pane fade" id="shared">
+          <div class="pull-right">
+            <span aria-hidden="true"></span> <input ng-model="searchText">
+          </div>
+          <br><br><br><br>
+          <div class="row">
+            <div class="col-xs-6 col-md-3" ng-repeat="x in shared_documents | filter:searchText">
+              <div class="thumbnail">
+                <a ng-href="{{x.url}}">
+                  <div class="previewHeightcontainer">
+                    <img ng-attr-id="file-{{x.id}}" src="" class="previewHeight" ng-init="getUrl(x)"/>
+                  </div>
+                  <div class="caption">
+                    <p><h5>{{ x.name }}</h5></p>
+                  </div>
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
         <!-- /Shared With Me -->
       </div>
 
     </div>
+  </div>
   </div>
 </div>
 

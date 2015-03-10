@@ -1,8 +1,6 @@
 class AddAttachmentFileToUploads < ActiveRecord::Migration
   def self.up
-    change_table :uploads do |t|
-      t.attachment :file
-    end
+    add_attachment :uploads, :file
   end
 
   def self.down
