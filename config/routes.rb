@@ -12,6 +12,8 @@ Rails.application.routes.draw do
     end
   end
 
+  post 'share_multiple_documents' => "welcome#share_multiple_documents"
+
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
 

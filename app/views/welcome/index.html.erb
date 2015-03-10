@@ -12,11 +12,14 @@
       <%= f.file_field :file, class: "from-control" %>
       <%= (flash[:error] || flash[:success]) if @upload.errors.present? %><br>
       Select Users to share with:
-      <%= select_tag "users[]", options_for_select(@all_users), class:"select_user form-control", multiple:"multiple" %>
+      <%= select_tag "users[]", options_for_select(@all_users), class:"select_users form-control", multiple:"multiple" %>
       <br><br>
       <%= f.submit :upload, class: "btn btn-primary btn-sm" %>
     <% end %>
   </div>
+</div>
+<div class="share-multiple-doc-section">
+  <%= render partial: 'share_multiple_doc_form', locals: {all_users: @all_users, user_documents: @user_documents} %>
 </div>
 
 <div class="row">
@@ -81,5 +84,6 @@
 </div>
 
 <script>
-    $(".select_user").select2();
+    $(".select_users").select2();
+    $(".select_documents").select2();
 </script>

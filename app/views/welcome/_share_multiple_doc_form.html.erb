@@ -1,0 +1,10 @@
+<%= form_for "#", url: share_multiple_documents_path, remote: true do |f| %>
+    <h3>Share Multiple Documents</h3>
+    Select Documents
+    <%= select_tag "documents[]", options_for_select(user_documents), class:"select_documents form-control", multiple:"multiple" %>
+    <br><br>
+    Select Users
+    <%= select_tag "users[]", options_for_select(all_users), class:"select_users form-control", multiple:"multiple" %>
+    <br><br>
+    <%= f.button "Share Documents", class: "share_documents btn btn-primary btn-sm" %>
+<% end %>

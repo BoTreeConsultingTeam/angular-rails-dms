@@ -7,6 +7,7 @@ class WelcomeController < ApplicationController
     @my_uploads = current_user.uploads
     @shared_uploads = current_user.shares
     @all_users = User.all.where("id != ?", current_user.id).pluck(:name,:id)
+    @user_documents = current_user.uploads.pluck(:file_file_name, :id)
   end
 
   def get_files
@@ -20,6 +21,22 @@ class WelcomeController < ApplicationController
         my_uploads: my_uploads_hash,
         shared_uploads:shared_uploads_hash
     }
+  end
+
+  def share_multiple_documents
+    if params[:documents].present? && params[:users].present?
+      params[:documents].each do |document_id|
+        params[:users].each do |user_id|
+          Share.find_or_create_by(upload_id: document_id, user_id: user_id)
+        end
+      end
+
+      @all_users = User.all.where("id != ?", current_user.id).pluck(:name,:id)
+      @user_documents = current_user.uploads.pluck(:file_file_name, :id)
+      respond_to do |format|
+        format.js
+      end
+    end
   end
 
 end

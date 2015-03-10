@@ -1,0 +1,3 @@
+$('.share-multiple-doc-section').html('<%= escape_javascript(render( partial: 'welcome/share_multiple_doc_form', locals: {all_users: @all_users, user_documents: @user_documents}))%>');
+$(".select_users").select2();
+$(".select_documents").select2();
