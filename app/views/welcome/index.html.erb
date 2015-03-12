@@ -43,9 +43,9 @@
           <div class="row">
             <div class="col-xs-6 col-md-3" ng-repeat="x in my_documents | filter:searchText">
               <div class="thumbnail">
-                <a ng-href="{{x.url}}">
+                <a ng-href="{{x.original_url}}">
                   <div class="previewHeightcontainer">
-                    <img ng-attr-id="file-{{x.id}}" src="" class="previewHeight" ng-init="getUrl(x)"/>
+                    <img ng-attr-id="file-{{x.id}}" src="{{x.thumb_url}}" class="previewHeight"/>
                   </div>
                   <div class="caption">
                     <p><h5>{{ x.name }}</h5></p>
@@ -65,9 +65,9 @@
           <div class="row">
             <div class="col-xs-6 col-md-3" ng-repeat="x in shared_documents | filter:searchText">
               <div class="thumbnail">
-                <a ng-href="{{x.url}}">
+                <a ng-href="{{x.original_url}}">
                   <div class="previewHeightcontainer">
-                    <img ng-attr-id="file-{{x.id}}" src="" class="previewHeight" ng-init="getUrl(x)"/>
+                    <img ng-attr-id="file-{{x.id}}" src="{{x.thumb_url}}" class="previewHeight"/>
                   </div>
                   <div class="caption">
                     <p><h5>{{ x.name }}</h5></p>
