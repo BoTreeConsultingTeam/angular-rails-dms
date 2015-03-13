@@ -37,7 +37,7 @@ class Upload < ActiveRecord::Base
     Dir.chdir(saved_file_path)
     Dir.mkdir('thumb')
     Dir.chdir('thumb')
-    magick.scale(300, 300).write(thumb_file_name)
+    magick[0].scale(300, 300).write(thumb_file_name)
   end
 
   def create_pdf
